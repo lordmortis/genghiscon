@@ -1,0 +1,6 @@
+[submodule "vendor/authlogic"]
+	path = vendor/authlogic
+	url = git://github.com/binarylogic/authlogic.git
+[submodule "vendor/authlogic_openid"]
+	path = vendor/authlogic_openid
+	url = git://github.com/binarylogic/authlogic_openid.git
