@@ -1,0 +1,12 @@
+[submodule "vendor/plugins/open_id_authentication"]
+	path = vendor/plugins/open_id_authentication
+	url = git://github.com/rails/open_id_authentication.git
+[submodule "vendor/plugins/authlogic_openid"]
+	path = vendor/plugins/authlogic_openid
+	url = git@github.com:lordmortis/authlogic_openid.git
+[submodule "vendor/plugins/recaptcha"]
+	path = vendor/plugins/recaptcha
+	url = git://github.com/ambethia/recaptcha.git
+[submodule "vendor/plugins/paper_trail"]
+	path = vendor/plugins/paper_trail
+	url = git://github.com/airblade/paper_trail.git

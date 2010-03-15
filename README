@@ -1,2 +1,21 @@
 TODO: Gallery
+	- ?
 TODO: CMS
+	- Versioning (probably requires acts_as_version or something)
+	- Tags
+	- Comments
+	- Blocks
+		- Authors
+		- Editors
+	- Pages
+		- Summary Block
+		- Page Text
+
+TODO: Blogs
+	- Build on the CMS
+
+TODO: Users
+	- Password Recovery
+	- Facebook Connect
+	- OpenID
+	- Other auth. frameworks?

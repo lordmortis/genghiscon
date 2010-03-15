@@ -25,4 +25,7 @@ config.action_view.cache_template_loading            = true
 # config.action_mailer.raise_delivery_errors = false
 
 # Enable threaded mode
-# config.threadsafe!
+#config.threadsafe!
+
+ENV['RECAPTCHA_PUBLIC_KEY']  = '6Ldc0wsAAAAAABm5HHi9-GdLkQlnuIM8fYaCmvxt'
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6Ldc0wsAAAAAAGzuJmjzbze6eOnwZ6Smq_YyUecG'

@@ -15,3 +15,6 @@ config.action_controller.perform_caching             = false
 
 # Don't care if the mailer can't send
 config.action_mailer.raise_delivery_errors = false
+
+ENV['RECAPTCHA_PUBLIC_KEY']  = '6Ldc0wsAAAAAABm5HHi9-GdLkQlnuIM8fYaCmvxt'
+ENV['RECAPTCHA_PRIVATE_KEY'] = '6Ldc0wsAAAAAAGzuJmjzbze6eOnwZ6Smq_YyUecG'
