@@ -17,13 +17,13 @@
 <% if @content_page.block != nil %>
 <p>
   <strong>Block:</strong>
-  <%=h link_to(@content_page.block.title, @content_page.block) %>
+  <%= link_to(@content_page.block.title, @content_page.block) %>
 </p>
 <% end %>
 <% if @content_page.tag != nil %>
 <p>
   <strong>Tag:</strong>
-  <%=h link_to(@content_page.tag.name, @content_page.tag) %>
+  <%= link_to(@content_page.tag.name, @content_page.tag) %>
 </p>
 <% end %>
 
