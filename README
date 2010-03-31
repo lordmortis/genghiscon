@@ -19,3 +19,6 @@ TODO: Users
 	- Facebook Connect
 	- OpenID
 	- Other auth. frameworks?
+	
+TODO: Security
+	Disable scripts on public/*/*

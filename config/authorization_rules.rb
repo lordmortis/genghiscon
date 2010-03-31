@@ -1,13 +1,23 @@
 authorization do
-	role :admin do
-		has_permission_on [:users], :to => [:new, :index, :create, :edit, :update, :send_new_mail, :send_mail]
+	role :executive do
+		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
+		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
+		has_permission_on [:index], :to => [:index, :admin, :section]
 	end
 	
-	role :employee do
-		has_permission_on [:users], :to => [:new, :index, :create, :edit, :update, :send_new_mail, :send_mail]		
+	role :committee do
+		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show]
+		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show]
+		has_permission_on [:index], :to => [:index, :admin, :section]
+	end
+	
+	role :member do 
+		has_permission_on [:index], :to => [:index, :section]
+		has_permission_on [:content_blocks], :to => [:show]
 	end
 	
 	role :guest do
-		has_permission_on [:users], :to => [:index, :create, :edit, :update]		
+		has_permission_on [:index], :to => [:index, :section]
+		has_permission_on [:content_blocks], :to => [:show]
 	end
 end

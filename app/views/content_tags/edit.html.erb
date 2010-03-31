@@ -1,0 +1,24 @@
+<% content_for :title do %>Tag Edit<% end %>
+<h1>Edit Tag</h1>
+
+<% form_for(@tag) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+    <%= f.label :name, "Tag Name" %> 
+		<%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :pagename, "Tag is a Page?" %><br />
+		<%= f.check_box :pagename %>
+  </p>
+  <p>
+    <%= f.label :order_index, "Order:" %><br />
+		<%= f.text_field :order_index %>
+  </p>
+  <p>
+    <%= f.submit 'Modify' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', content_tags_path %>

@@ -1,0 +1,7 @@
+<% content_for :title do %>2011 - <%= @section.name.capitalize %><% end %>
+<% for block in @section.blocks %>
+<%= link_to(block.updated_at.strftime("%H:%M on %b %d, %Y"), block) %>
+<blockquote>
+<%= block.summary %>
+</blockquote>
+<% end %>

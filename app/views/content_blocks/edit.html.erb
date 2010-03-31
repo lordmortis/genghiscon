@@ -1,0 +1,28 @@
+<% content_for :title do %>New Content<% end %>
+<h1>New Content</h1>
+
+<% form_for(@block) do |f| %>
+  <%= f.error_messages %>
+
+  <p>
+		<%= link_to("Layout Reference", "http://redcloth.org/textile/") %><br/>
+    <%= f.label :bodytext, "Body Text" %><br />
+    <%= f.text_area :bodytext %>
+    <%= f.label :bodytext, "Autosummarize" %>
+		<%= f.check_box :autosummarize %>
+  </p>
+  <p>
+    <%= f.label :summary %><br />
+    <%= f.text_area :summary %>
+  </p>
+	<p>
+		<%= f.label :tag_list, "Tags" %>
+		<%= f.text_field :tag_list %>(separate each tag with a comma)
+	</p>
+
+  <p>
+    <%= f.submit 'Modify' %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', content_blocks_path %>

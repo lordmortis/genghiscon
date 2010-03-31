@@ -7,8 +7,13 @@
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 </head>
 <body>
-  <div id="user_nav">
+  <div id="wrapper-top">
+  <%= image_tag("topbar_logo.png", :height => 108, :width => 373)%>
+  <div id="login">
     <% if current_user %>
+      <% permitted_to? :admin, :index do %>
+        <%= link_to "Admin", :controller => "index", :action => "admin" %> |        
+      <% end %>
       <%= link_to "Edit Profile", edit_user_path(:current) %> |
       <%= link_to "Logout", logout_path %>
     <% else %>
@@ -16,6 +21,24 @@
       <%= link_to "Login", login_path %>
     <% end %>
   </div>
-	<%= yield %>
+  </div>
+  <div id="topbar">
+    <div id="content">
+    <div class="floatright">14th January to 16th January 2011</div>
+    GenghisCon 2011: The Wraith of Khan
+    </div>
+    <ul>
+      <% for page in ContentTag.topbar.all %>
+      <%= link_to("<li>#{page.name.capitalize}</li>", {:controller => "index", :action => "section", :id => page.name}) %>
+      <% end %>
+    </ul>
+  </div>
+  <div id="page">
+    <div id="content">
+	    <%= yield %>
+	  </div>
+	</div>
+	<div id="bottombar">
+  </div>
 </body>
 </html>

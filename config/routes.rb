@@ -31,10 +31,13 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
 
-  map.root :controller => "index"
+  map.root :controller => "index", :action => "section", :id => "News"
+	map.connect 'section/:id', :controller => "index", :action => "section"
 
   map.resource :user_session
   map.resources :users
+  map.resources :content_blocks
+  map.resources :content_tags
   map.resource :account, :controller => "users"
 
 	map.login "login", :controller => "user_sessions", :action => "new"

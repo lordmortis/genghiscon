@@ -1,0 +1,25 @@
+<% content_for :title do %>Content<% end %>
+<h1>Listing content</h1>
+
+<table width=100%>
+  <tr>
+    <th>Created</th>
+		<th>Updated</th>
+		<th>Summary</th>
+		<th>Tags</th>
+  </tr>
+
+<% @blocks.each do |block| %>
+  <tr>
+    <td valign="top"><%=h block.created_at %></td>
+		<td><%=h block.updated_at %></td>
+		<td><%=h block.summary %></td>
+		<td><%= block.tag_list(true) %></td>
+    <td><%= link_to 'Show', block %> <%= link_to 'Edit', edit_content_block_path(block) %> <%= link_to 'Destroy', block, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Block', new_content_block_path %>
