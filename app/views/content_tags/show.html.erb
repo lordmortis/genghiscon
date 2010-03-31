@@ -3,3 +3,4 @@ Name: <%= @tag.name %><br/>
 Pages: <%= page_list(@tag) %><br/>
 <%= link_to 'Edit', edit_content_tag_path(@tag) %>
 <%= link_to 'Back', content_tags_path %>
+<%= link_to "Destroy", @tag, :confirm => 'Are you sure?', :method => :delete %> |
