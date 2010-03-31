@@ -1,0 +1,21 @@
+<% content_for :title do %>Content Pages<% end %>
+
+<table>
+  <tr>
+		<th>Title</th>
+    <th>Content Block</th>
+    <th>Content Tag</th>
+  </tr>
+  <% for content_page in @content_pages %>
+    <tr>
+      <td><%=h content_page.name %></td>
+      <td><% if content_page.block != nil %><%=h content_page.block.title %><% else %> No Block <% end %></td>
+      <td><% if content_page.tag != nil %><%=h content_page.tag.name %><% else %> No Tag <% end %></td>
+      <td><%= link_to "Show", content_page %></td>
+      <td><%= link_to "Edit", edit_content_page_path(content_page) %></td>
+      <td><%= link_to "Destroy", content_page, :confirm => 'Are you sure?', :method => :delete %></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "New Content Page", new_content_page_path %></p>

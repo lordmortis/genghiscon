@@ -1,0 +1,8 @@
+<% content_for :title do %><%= @block.title %><% end %>
+<%= RedCloth.new(@block.bodytext).to_html %>
+<% for tag in @block.tags %>
+<%= link_to(tag.name.capitalize, :action => "tag", :id => tag.name) %>
+<% end %>
+<br/>
+Last Updated: <%= @block.updated_at.strftime("%H:%M on %b %d, %Y (GMT)") %>
+<% if permitted_to? :update, @block %><br/><%= link_to 'Edit', edit_content_block_path(@block) %><% end -%>

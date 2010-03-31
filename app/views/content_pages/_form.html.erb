@@ -1,0 +1,24 @@
+<% form_for @content_page do |f| %>
+  <%= f.error_messages %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :home, "Page is Home Page:" %><br />
+    <%= f.check_box :home %>
+  </p>
+  <p>
+    <%= f.label :navbar, "Page is in Nav Bar:" %><br />
+    <%= f.check_box :navbar %>
+  </p>
+	<p>
+    <%= f.label :content_block_id, "Block for this Page: " %><br />
+    <%= f.select :content_block_id, ContentBlock.all.collect {|p| [ "#{p.title}", p.id ] }, {:include_blank => 'No Block'} %>
+	</p>
+	<p>
+    <%= f.label :content_tag_id, "Tag for this Page:" %><br />
+    <%= f.select :content_tag_id, ContentTag.all.collect {|p| [ "#{p.name}", p.id ] }, {:include_blank => 'No Tag'} %>
+	</p>
+  <p><%= f.submit "Submit" %></p>
+<% end %>

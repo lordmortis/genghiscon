@@ -3,7 +3,10 @@
 
 <% form_for(@block) do |f| %>
   <%= f.error_messages %>
-
+	<p>
+		<%= f.label :title, "Title" %>
+		<%= f.text_field :title %>
+	</p>
   <p>
 		<%= link_to("Layout Reference", "http://redcloth.org/textile/") %><br/>
     <%= f.label :bodytext, "Body Text" %><br />

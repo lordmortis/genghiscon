@@ -8,7 +8,6 @@
 </head>
 <body>
   <div id="wrapper-top">
-  <%= image_tag("topbar_logo.png", :height => 108, :width => 373)%>
   <div id="login">
     <% if current_user %>
       <% permitted_to? :admin, :index do %>
@@ -21,6 +20,7 @@
       <%= link_to "Login", login_path %>
     <% end %>
   </div>
+  <%= image_tag("topbar_logo.png", :height => 108, :width => 373)%>
   </div>
   <div id="topbar">
     <div id="content">
@@ -28,9 +28,14 @@
     GenghisCon 2011: The Wraith of Khan
     </div>
     <ul>
-      <% for page in ContentTag.topbar.all %>
-      <%= link_to("<li>#{page.name.capitalize}</li>", {:controller => "index", :action => "section", :id => page.name}) %>
-      <% end %>
+<% for page in ContentPage.topbar -%>
+<% if "page" == controller.action_name && controller.controller_name == "content_viewer" && params[:id] == page.name -%>
+<% liclass = "selected" -%>
+<% else -%>
+<% liclass = "unselected" -%>
+<% end -%>
+<%= link_to("<li class=\"#{liclass}\">#{page.name.capitalize}</li>", {:controller => "content_viewer", :action => "page", :id => page.name}) -%>
+<% end -%>
     </ul>
   </div>
   <div id="page">

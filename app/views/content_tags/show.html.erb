@@ -1,5 +1,5 @@
 <% content_for :title do %>Tag - <%= @tag.name %><% end %>
 Name: <%= @tag.name %><br/>
-Page: <%= @tag.page? %><br/>
+Pages: <%= page_list(@tag) %><br/>
 <%= link_to 'Edit', edit_content_tag_path(@tag) %>
 <%= link_to 'Back', content_tags_path %>

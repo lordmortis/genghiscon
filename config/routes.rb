@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :content_pages
+
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -31,8 +33,10 @@ ActionController::Routing::Routes.draw do |map|
   #   end
 
 
-  map.root :controller => "index", :action => "section", :id => "News"
-	map.connect 'section/:id', :controller => "index", :action => "section"
+  map.root :controller => "index", :action => "index"
+	map.connect 'page/:id', :controller => "content_viewer", :action => "page"
+	map.connect 'article/:id', :controller => "content_viewer", :action => "content"	
+	map.connect 'tag/:id', :controller => "content_viewer", :action => "tag"	
 
   map.resource :user_session
   map.resources :users

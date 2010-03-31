@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
 		@user_session.save do |result|
 	    if result
 	      flash[:notice] = "Login successful!"
-	    redirect_to :controller => "index", :action => "sections", :id => "news"
+	    redirect_to :controller => "index", :action => "section", :id => "news"
 	    else
 	      render :action => :new
 	    end
@@ -20,6 +20,6 @@ class UserSessionsController < ApplicationController
   def destroy
     current_user_session.destroy
     flash[:notice] = "Logout successful!"
-	    redirect_to :controller => "index", :action => "sections", :id => "news"
+	    redirect_to :controller => "index", :action => "section", :id => "news"
   end
 end

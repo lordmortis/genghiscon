@@ -67,9 +67,16 @@ body {
 	font-size: 95%;
 	margin: 0;
 	padding: 0 14px;
-	background: transparent url('<%= image_path("#{@theme.theme}/MenuDiv.png") %>') repeat-y scroll 100% 0;
+	background: transparent;
 	background-position: 0 0;
 	height: 100%;
+}
+
+#topbar li.selected {
+	background: #080808;
+}
+
+#topbar li.selected:hover {
 }
 
 #topbar li:hover {

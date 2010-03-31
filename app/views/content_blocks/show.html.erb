@@ -1,8 +1,24 @@
-<% content_for :title do %><% end %>
-<%= RedCloth.new(@block.bodytext).to_html %>
-<% for tag in @block.tags %>
-<%= link_to(tag.name.capitalize, :controller => "index", :action => "section", :id => tag.name) %>
-<% end %>
-<br/>
-Last Updated: <%= @block.updated_at.strftime("%H:%M on %b %d, %Y (GMT)") %>
-<% if permitted_to? :update, @block %><br/><%= link_to 'Edit', edit_content_block_path(@block) %><% end -%>
+<% content_for :title do %>Content Block - <%= @content_block.title %><% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%=h @content_block.title %>
+</p>
+<p>
+  <strong>Tags:</strong>
+	<td><%= tag_list(@content_block) %></td>
+</p>
+<p>
+  <strong>Pages:</strong>
+	<td><%= page_list(@content_block) %></td>	
+</p>
+<p>
+  <strong>Summary:</strong>
+	<td><%= @content_block.summary %></td>	
+</p>
+<%= RedCloth.new(@content_block.bodytext).to_html %>
+<p>
+  <%= link_to "Edit", edit_content_block_path(@content_block) %> |
+  <%= link_to "Destroy", @content_block, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", content_blocks_path %>
+</p>

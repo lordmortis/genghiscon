@@ -2,12 +2,14 @@ authorization do
 	role :executive do
 		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
 		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
+		has_permission_on [:content_pages], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
 		has_permission_on [:index], :to => [:index, :admin, :section]
 	end
 	
 	role :committee do
 		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show]
 		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show]
+		has_permission_on [:content_pages], :to => [:new, :index, :create, :edit, :update, :show]
 		has_permission_on [:index], :to => [:index, :admin, :section]
 	end
 	

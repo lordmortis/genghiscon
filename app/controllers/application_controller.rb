@@ -8,16 +8,31 @@ class ApplicationController < ActionController::Base
   filter_parameter_logging :password, :password_confirmation
   helper_method :current_user_session, :current_user
 
-  private
-    def current_user_session
-      return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
-    end
+	before_filter :prepare_for_mobile
 
-    def current_user
-      return @current_user if defined?(@current_user)
-      @current_user = current_user_session && current_user_session.user
-    end
+	private
 
+	def mobile_device?
+		if session[:mobile_param]
+			session[:mobile_param] == "1"
+		else
+			request.user_agent =~ /Mobile|webOS/
+		end
+	end
+	helper_method :mobile_device?
 
+	def prepare_for_mobile
+		session[:mobile_param] = params[:mobile] if params[:mobile]
+		request.format = :mobile if mobile_device?
+	end
+
+	def current_user_session
+		return @current_user_session if defined?(@current_user_session)
+		@current_user_session = UserSession.find
+	end
+
+	def current_user
+		return @current_user if defined?(@current_user)
+		@current_user = current_user_session && current_user_session.user
+	end
 end

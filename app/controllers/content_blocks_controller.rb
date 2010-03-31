@@ -7,6 +7,7 @@ class ContentBlocksController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
+			format.mobile # index.mobile.erb
     end
   end
 
@@ -15,6 +16,7 @@ class ContentBlocksController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+			format.mobile # index.mobile.erb
 		end
   end
 
@@ -23,6 +25,7 @@ class ContentBlocksController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
+			format.mobile # index.mobile.erb
     end
   end
 

@@ -6,8 +6,7 @@ class IndexController < ApplicationController
 	def admin
 	end
 	
-	def section
-		@section = ContentTag.find_by_name(params[:id].downcase)
-		
+	def index
+		redirect_to :controller => "content_viewer", :action => "page"
 	end
 end

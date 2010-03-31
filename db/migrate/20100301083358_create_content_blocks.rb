@@ -1,6 +1,7 @@
 class CreateContentBlocks < ActiveRecord::Migration
   def self.up
     create_table :content_blocks do |t|
+			t.string :title, :null => true
 			t.text :summary, :null => true
 			t.text :bodytext, :null => true
 			t.boolean :autosummarize, :null => false, :default => false

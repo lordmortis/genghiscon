@@ -3,7 +3,10 @@
 
 <% form_for(@block) do |f| %>
   <%= f.error_messages %>
-
+	<p>
+		<%= f.label :title, "Title" %>
+		<%= f.text_field :title %>
+	</p>
   <p>
 		<%= link_to("Layout Reference", "http://redcloth.org/textile/") %><br/>
     <%= f.label :bodytext, "Body Text" %><br />
@@ -15,6 +18,11 @@
     <%= f.label :summary %><br />
     <%= f.text_area :summary %>
   </p>
+	<p>
+		<%= f.label :tag_list, "Tags" %>
+		<%= f.text_field :tag_list %>(separate each tag with a comma)
+	</p>
+
   <p>
     <%= f.submit 'Create' %>
   </p>
