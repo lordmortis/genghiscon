@@ -14,7 +14,7 @@ class UsersController < ApplicationController
 	    flash[:notice] = "Registration successful."
 			# TODO: redirect to where the user came from before logging in...
 			logger.debug("This should be redirecting...")
-	    redirect_to :controller => "index", :action => "section", :id => "news"
+	    redirect_to :controller => "content_viewer", :action => "page"
 	  else
 	    render :action => 'new'
 	  end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
 	  if @user.save
 	    flash[:notice] = "Successfully updated profile."
 			# TODO: redirect to where the user came from before logging in...
-	    redirect_to :controller => "index", :action => "section", :id => "news"
+	    redirect_to :controller => "content_viewer", :action => "page"
 	  else
 	    render :action => 'edit'
 	  end

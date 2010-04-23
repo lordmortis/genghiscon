@@ -18,7 +18,7 @@
       <% else -%>
       <% liclass = "unselected" -%>
       <% end -%>
-      <%= link_to("<li class=\"#{liclass}\">#{page.name.capitalize}</li>", {:controller => "content_viewer", :action => "page", :id => page.name}) -%>
+      <li class="<%= liclass %>"><%= link_to("#{page.name.capitalize}", {:controller => "content_viewer", :action => "page", :id => page.name}) %></li>
       <% end -%>
     </ul>
   </div>

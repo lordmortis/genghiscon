@@ -13,8 +13,11 @@ class ApplicationController < ActionController::Base
 	private
 
 	def mobile_device?
+		logger.debug("User Agent: #{request.user_agent}")
 		if session[:mobile_param]
 			session[:mobile_param] == "1"
+		elsif request.user_agent =~ /iPad/
+			return false
 		else
 			request.user_agent =~ /Mobile|webOS/
 		end
