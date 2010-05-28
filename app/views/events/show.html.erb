@@ -1,0 +1,39 @@
+<% content_for :title do %>Event - <%= @event.name %><% end %>
+<% content_for :header do %>
+<%= javascript_classes %>
+<script>
+var event_id = <%= @event.id %>;
+var new_attendee_id = -1;
+var outstanding = 0;
+var temp;
+</script>	
+<% end %>
+<div class="floatright">
+<div style="position: relative; width: 32px; height: 32px;"><span id="loading" class="hidden"><%= image_tag("ajaxwait.gif") %></span></div>
+Money: <input type="text" id="calc_money" value="0" onChange="updateCalc()" size="5"><br/>
+<button onClick="setCalcValue(0);">$0</button> <button onClick="addCalcValue(5);">$5</button> <button onClick="addCalcValue(10);">$10</button> <button onClick="addCalcValue(20);">$20</button> <button onClick="addCalcValue(50);">$50</button><br/>
+# Tickets: <input type="text" id="calc_ticketnum" value="1" onChange="updateCalc()" size="5"> x <input type="text" id="calc_ticketprice" value="11" onChange="updateCalc()" size="5"><br/>
+Change: <span id="calc_change"></span>
+</div>
+Event: <span id="event_name" style="font-size: 1.5em;"></span><br/>
+<span id="total_attendees"></span> Attendees<br/>
+<span id="attending_attendees"></span> Ticketed<br/>
+<br/><br/>
+<div id="event_attendees">
+<button id="add_button" onClick="spawnAdd()">Add Attendee</button><br/><br/>
+</div>
+<p>
+  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", events_path %>
+</p>
+
+<div id="attendeeadd" class="hidden">
+Name<br/>
+<input type="text" id="name" class="iphone-maxwidth"><br/>
+No RSVP? <input type="checkbox" id="norsvp" class="iphone-checkbox"><br/>
+Email<br/>
+<input type="text" id="email" class="iphone-maxwidth"><br/>
+<button id="submit">Add!</button>
+</div>
+
+<div class="attendee hidden" id="attendee_line"><span id="name"></span> - <button id="attended"></button> - <button class="small" id="delete">Remove</button></div>

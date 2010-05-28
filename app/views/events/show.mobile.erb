@@ -1,0 +1,38 @@
+<% content_for :title do %>Event - <%= @event.name %><% end %>
+<% content_for :header do %>
+<%= javascript_classes %>
+<script>
+var event_id = <%= @event.id %>;
+var new_attendee_id = -1;
+var outstanding = 0;
+var temp;
+</script>	
+<% end %>
+<div class="floatright">
+<span id="loading" class="hidden"><%= image_tag("ajaxwait.gif") %></span><br/>
+</div>
+Event: <span id="event_name" style="font-size: 1.5em;"></span><br/>
+<span id="total_attendees"></span> Attendees
+<br/><br/>
+<div id="event_attendees">
+<button id="add_button" onClick="spawnAdd()">Add Attendee</button><br/><br/>
+</div>
+<p>
+  <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", events_path %>
+</p>
+
+<div id="attendeeadd" class="attendeeadd hidden">
+<span class="floatright"><input type="checkbox" id="norsvp" class="iphone-checkbox"> RSVP</span>
+<label>Name</label><br/>
+<input type="text" id="name" class="iphone-maxwidth"><br/>
+<label>E-Mail</label><br/>
+<input type="text" id="email" class="iphone-maxwidth"><br/>
+<button id="submit">Add!</button>
+</div>
+
+<div class="attendee hidden" id="attendee_line">
+<label id="name"></label>
+<button id="attended"></button>
+<button class="small" id="delete">Remove</button>
+</div>

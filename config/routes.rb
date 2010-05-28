@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :content_pages
 
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -42,6 +41,8 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :users
   map.resources :content_blocks
   map.resources :content_tags
+  map.resources :content_pages
+	map.resources :events, :has_many => [:attendees]
   map.resource :account, :controller => "users"
 
 	map.login "login", :controller => "user_sessions", :action => "new"

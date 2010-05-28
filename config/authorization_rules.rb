@@ -3,6 +3,8 @@ authorization do
 		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
 		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
 		has_permission_on [:content_pages], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
+		has_permission_on [:events], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
+		has_permission_on [:attendees], :to => [:new, :index, :create, :edit, :update, :show, :destroy]
 		has_permission_on [:index], :to => [:index, :admin, :section]
 	end
 	
@@ -10,6 +12,8 @@ authorization do
 		has_permission_on [:content_blocks], :to => [:new, :index, :create, :edit, :update, :show]
 		has_permission_on [:content_tags], :to => [:new, :index, :create, :edit, :update, :show]
 		has_permission_on [:content_pages], :to => [:new, :index, :create, :edit, :update, :show]
+		has_permission_on [:events], :to => [:new, :index, :create, :edit, :update, :show]
+		has_permission_on [:attendees], :to => [:new, :index, :create, :edit, :update, :show]	
 		has_permission_on [:index], :to => [:index, :admin, :section]
 	end
 	

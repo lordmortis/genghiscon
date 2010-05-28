@@ -1,0 +1,10 @@
+<% content_for :title do %>Editing - Events<% end %>
+<h1>Listing Events</h1>
+
+<% @events.each do |event| %>
+<%= link_to event.name, event %> <%= link_to 'Edit', edit_event_path(event) %> <%= link_to 'Destroy', event, :confirm => 'Are you sure?', :method => :delete %><br/>
+<% end %>
+
+<br />
+
+<%= link_to 'New Event', new_event_path %>

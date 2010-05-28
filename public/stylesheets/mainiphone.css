@@ -34,7 +34,7 @@ body {
 	color: black;
 }
 
-#topbar {
+.blackbar {
 	position: relative;
 	background: black repeat-x scroll 100% 0;
 	line-height: 30px;
@@ -44,13 +44,13 @@ body {
 	color: white;
 }
 
-#topbar #content {
+.blackbar #content {
 	margin: 0.5em;
 	color: white;
 	font-family: Arial;
 }
 
-#topbar ul {
+.blackbar ul {
 	height: 36px;
 	list-style-image:none;
 	list-style-position:outside;
@@ -61,12 +61,12 @@ body {
 	padding: 0;
 }
 
-#topbar a {
+.blackbar a {
 	color: white;
 	text-decoration: none;
 }
 
-#topbar li {
+.blackbar li {
 	display:block;
 	float: left;
 	font-size: 95%;
@@ -77,7 +77,7 @@ body {
 	height: 100%;
 }
 
-#topbar li.selected {
+.blackbar li.selected {
 	background: #080808;
 }
 
@@ -85,3 +85,53 @@ body {
 	float: right;
 }
 
+.iphone-maxwidth {
+	-webkit-box-sizing: border-box;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 8px 0px 0px;
+	padding: 6px;
+	width: 100%;
+}
+
+.iphone-checkbox {
+	-webkit-box-sizing: border-box;
+	font-weight: normal;
+	width: 20px;
+	height: 20px;
+}
+
+button {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 8px 0px 0px;
+	padding: 6px;
+	width: 100%;
+}
+
+label {
+	margin: auto;
+	font-size: 1.5em;
+	font-weight: bold;
+}
+
+.attendee {
+	padding: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #999999;
+	background-color: #AAAAAA;
+	margin: 5px;
+}
+
+.attendeeadd {
+	padding: 5px;
+	-webkit-border-radius: 5px;
+	border: 1px solid #999999;
+	background-color: #AAAAAA;
+	margin: 5px;
+}
+
+
+.hidden {
+	display: none;
+}

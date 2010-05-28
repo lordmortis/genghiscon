@@ -1,0 +1,18 @@
+#!/bin/sh
+
+COMPILER="java -jar /Users/lordmortis/bin/compiler.jar"
+COMPILEROPTIONS="--compilation_level ADVANCED_OPTIMIZATIONS --warning_level VERBOSE"
+JAVASCRIPTDIRECTORY="public/javascripts"
+
+for directory in `ls -1F $JAVASCRIPTDIRECTORY | grep "/" | sed 's/\///'`; do
+	fullpath=$JAVASCRIPTDIRECTORY/$directory
+	echo "Compiling $fullpath"
+	scripts=""
+	echo "" > $fullpath.js
+	for script in `ls -1 $fullpath`; do
+		`$COMPILER $COMPILEROPTS --js_output_file $fullpath.tmp.js --js $fullpath/$script`
+		cat $fullpath.js $fullpath.tmp.js > $fullpath.tmp2.js
+		mv $fullpath.tmp2.js $fullpath.js
+	done
+	rm $fullpath.tmp.js
+done

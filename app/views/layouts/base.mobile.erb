@@ -6,11 +6,13 @@
   <meta name="viewport" content="width=device-width" />
 	<%= stylesheet_link_tag "mainiphone" %>
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
+	<%= jqueryincludes %>	
+	<%= yield :header %>
 </head>
 <body>
   <div id="wrapper-top">
   </div>
-  <div id="topbar">
+	<div class="blackbar">
     <ul>
       <% for page in ContentPage.topbar -%>
       <% if "page" == controller.action_name && controller.controller_name == "content_viewer" && params[:id] == page.name -%>
@@ -26,5 +28,20 @@
     <div id="content">
 	    <%= yield %>
 	  </div>
+	</div>
+	<div class="blackbar">
+	  <ul>
+  	<% if current_user %>
+      <% permitted_to? :admin, :index do %>
+        <li class="unselected"><%= link_to "Admin", :controller => "index", :action => "admin" %></li>        
+      <% end %>
+      <li class="unselected"><%= link_to "Edit Profile", edit_user_path(:current) %></li>
+      <li class="unselected"><%= link_to "Logout", logout_path %></li>
+    <% else %>
+      <li class="unselected"><%= link_to "Register", new_user_path %></li>
+      <li class="unselected"><%= link_to "Login", login_path %></li>
+    <% end %>
+    </ul>
+  </div>
 </body>
 </html>

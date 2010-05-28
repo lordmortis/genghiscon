@@ -117,3 +117,8 @@ body {
 	float: right;
 }
 
+.hidden {
+	display: none;
+}
+
+

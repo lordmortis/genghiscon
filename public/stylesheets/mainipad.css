@@ -1,0 +1,29 @@
+body {
+	background-color: gray;
+	font-family: Verdana;
+	font-size: 1.0em;
+	margin: 0px;
+}
+
+button {
+	font-size: 16px;
+	font-weight: normal;
+	margin: 8px 0px 0px;
+	padding: 6px;
+}
+
+.iphone-maxwidth {
+	-webkit-box-sizing: border-box;
+	font-size: 16px;
+	font-weight: normal;
+	margin: 8px 0px 0px;
+	padding: 6px;
+}
+
+.iphone-checkbox {
+	-webkit-box-sizing: border-box;
+	font-weight: normal;
+	width: 30px;
+	height: 30px;
+}
+
