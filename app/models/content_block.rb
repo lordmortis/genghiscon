@@ -15,11 +15,17 @@ class ContentBlock < ActiveRecord::Base
 	def publish(link)
 		self.published = true
 		
-		# short link
-		# TODO: make this less hacky...
 		if (self.short_url == nil)
-			#bitly = Bitly.new(ENV['BITLYUSER'], ENV['BITLYKEY'])
-			logger.debug("Link to shorten: " + link)
+			bitly = Bitly.new(ENV['BITLYUSER'], ENV['BITLYKEY'])
+			self.short_url = bitly.shorten(link).short_url
+		end
+		
+		if (self.tweet_id == nil and ContentTwitterLib::Setup.Working)
+			oauth = Twitter::OAuth.new(ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'])
+			oauth.authorize_from_access(ENV['TWITTER_ACCESS_TOKEN'], ENV['TWITTER_ACCESS_SECRET'])
+
+			client = Twitter::Base.new(oauth)
+			self.tweet_id = client.update("#{self.summary} #{self.short_url}").id
 		end
 		
 		# do twitter publishing
@@ -29,7 +35,21 @@ class ContentBlock < ActiveRecord::Base
 	
 	def unpublish
 		self.published = false
+		
 		# Remove tweet.
+		if (self.tweet_id != nil and ContentTwitterLib::Setup.Working)
+			oauth = Twitter::OAuth.new(ENV['TWITTER_CONSUMER_KEY'], ENV['TWITTER_CONSUMER_SECRET'])
+			oauth.authorize_from_access(ENV['TWITTER_ACCESS_TOKEN'], ENV['TWITTER_ACCESS_SECRET'])
+
+			client = Twitter::Base.new(oauth)
+			begin
+				client.status_destroy(self.tweet_id)
+				self.tweet_id = nil
+			rescue Twitter::NotFound => boom
+				self.tweet_id = nil
+			end
+		end
+		
 		# Remove LJ post.
 		self.save
 	end

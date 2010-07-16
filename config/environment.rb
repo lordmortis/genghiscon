@@ -25,6 +25,9 @@ Rails::Initializer.run do |config|
 	# used by the CMS
 	config.gem 'RedCloth'
 	config.gem "bitly"
+	config.gem 'oauth'
+	config.gem 'twitter'
+	
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -56,3 +59,9 @@ Bitly.use_api_version_3
 
 ENV['BITLYUSER']  = "lordmortis"
 ENV['BITLYKEY']  = "R_e45d05c52caa953ebc840458e147b9fb"
+
+ENV['TWITTER_CONSUMER_KEY'] = "SvbaMrcFqEqs3FLOX7uGfQ"
+ENV['TWITTER_CONSUMER_SECRET'] = "w88I4yOC9QRY8bkh6NK0k72I6iSxTisv64yHslNs"
+
+ENV['TWITTER_ACCESS_TOKEN'] = "116678000-14ZGOWLoUF2FC4AY4aVmckYWkTqMkz6bAJpoJUk"
+ENV['TWITTER_ACCESS_SECRET'] = "2U1dgdhxZ0qOAesRDBrChyfk3r7sMKlFK7knuwk"

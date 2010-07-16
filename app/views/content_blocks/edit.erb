@@ -54,8 +54,8 @@ $(document).ready(function() {
 });
 </script>
 <% end %>
-<h1>New Content</h1>
-
+<div class="rightside" style="position:absolute; right: 5px; width: 55%; height: 90%; overflow: scroll;" id="preview_box"></div>
+<div class="leftside" style="position:absolute; left: 5px; width: 40%; height: 90%; overflow: scroll;">
 <% form_for(@block) do |f| %>
   <%= f.error_messages %>
 	<p>
@@ -67,7 +67,6 @@ $(document).ready(function() {
     <%= f.label :bodytext, "Body Text" %><br/>
 		<%= f.check_box :preview %> Preview<br/>
 		<%= f.check_box :autosummarize %> Autosummarize<br/>
-		<div class="floatright" style="position: relative; width: 50%" id="preview_box"></div>
 		<%= f.text_area :bodytext %><br/>
   </p>
   <p>
@@ -85,3 +84,4 @@ $(document).ready(function() {
 <% end %>
 
 <%= link_to 'Back', content_blocks_path %>
+</div>
