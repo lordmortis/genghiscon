@@ -1,6 +1,61 @@
 <% content_for :title do %>New Content<% end %>
-<h1>New Content</h1>
+<% content_for :header do %>
+<script>
+var lastedit = null;
+var lastpreview = false;
 
+function updatepreview(object, data, textStatus, XMLHttpRequest) {
+	$("#preview_box").html(object);
+}
+
+function dosummarize() {
+	var autosummarize_enabled = $("#content_block_autosummarize").attr("checked")
+	if (autosummarize_enabled) {
+		var text = $("#content_block_bodytext").val();
+		if (text.length <= 140)
+			$("#content_block_summary").val(text);
+		else
+			$("#content_block_summary").val(text.slice(0, 116) + "...");
+		countupdate();
+	}
+}
+
+function countupdate() {
+	$("#summary_count").html($("#content_block_summary").val().length + 21);
+}
+
+function dopreview() {
+	var preview_enabled = $("#content_block_preview").attr("checked")
+	if (preview_enabled) {
+		lasteditdelay = ((new Date() - lastedit) > 1000) || (lastedit == null);
+		if ( lasteditdelay && ( !lastpreview ) ) {
+			lastpreview = true;
+			$.ajax({
+				data: {
+						authenticity_token: AUTH_TOKEN,
+						'redcloth': $("#content_block_bodytext").val(),
+					},
+				dataType: "text",
+				type: 'POST',
+				success: updatepreview,
+				url: "/content_blocks/preview/"
+			});
+		}
+	}
+}
+
+$(document).ready(function() {
+	setInterval("dopreview()", 100);
+	$("#content_block_bodytext").keyup(function() { lastedit = new Date(); lastpreview = false; dosummarize();});
+	$("#content_block_summary").keyup(function() { countupdate();});
+	dopreview();
+	dosummarize();
+	countupdate();
+});
+</script>
+<% end %>
+<div class="rightside" style="position:absolute; right: 5px; width: 55%; height: 90%; overflow: scroll;" id="preview_box"></div>
+<div class="leftside" style="position:absolute; left: 5px; width: 40%; height: 90%; overflow: scroll;">
 <% form_for(@block) do |f| %>
   <%= f.error_messages %>
 	<p>
@@ -9,14 +64,14 @@
 	</p>
   <p>
 		<%= link_to("Layout Reference", "http://redcloth.org/textile/") %><br/>
-    <%= f.label :bodytext, "Body Text" %><br />
-    <%= f.text_area :bodytext %>
-    <%= f.label :bodytext, "Autosummarize" %>
-		<%= f.check_box :autosummarize %>
+    <%= f.label :bodytext, "Body Text" %><br/>
+		<%= f.check_box :preview %> Preview<br/>
+		<%= f.check_box :autosummarize %> Autosummarize<br/>
+		<%= f.text_area :bodytext %><br/>
   </p>
   <p>
-    <%= f.label :summary %><br />
-    <%= f.text_area :summary %>
+    <%= f.label :summary %> - <span id="summary_count"></span> / 140 (this count includes the link)<br />
+    <%= f.text_area :summary, :rows => 6 %>
   </p>
 	<p>
 		<%= f.label :tag_list, "Tags" %>
@@ -24,8 +79,9 @@
 	</p>
 
   <p>
-    <%= f.submit 'Create' %>
+    <%= f.submit 'Modify' %>
   </p>
 <% end %>
 
 <%= link_to 'Back', content_blocks_path %>
+</div>
