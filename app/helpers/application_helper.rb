@@ -41,4 +41,8 @@ module ApplicationHelper
 	end
 	
 
+	def contentlink(content)
+		link_to(:action => "content", :controller => "content_viewer", :id => content.id)
+	end
+
 end

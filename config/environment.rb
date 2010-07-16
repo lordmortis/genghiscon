@@ -21,7 +21,10 @@ Rails::Initializer.run do |config|
   # config.gem "aws-s3", :lib => "aws/s3"
 	config.gem "authlogic"
 	config.gem "declarative_authorization"
+
+	# used by the CMS
 	config.gem 'RedCloth'
+	config.gem "bitly"
 
   # Only load the plugins named here, in the order given (default is alphabetical).
   # :all can be used as a placeholder for all plugins not explicitly named
@@ -43,9 +46,13 @@ Rails::Initializer.run do |config|
   # config.i18n.default_locale = :de
 end
 
+Bitly.use_api_version_3
 
 #require 'erubis/helpers/rails_helper'
 #Erubis::Helpers::RailsHelper.engine_class = Erubis::FastEruby # or Erubis::FastEruby
 #Erubis::Helpers::RailsHelper.init_properties = {}
 #Erubis::Helpers::RailsHelper.show_src = nil
 #Erubis::Helpers::RailsHelper.preprocessing = false
+
+ENV['BITLYUSER']  = "lordmortis"
+ENV['BITLYKEY']  = "R_e45d05c52caa953ebc840458e147b9fb"

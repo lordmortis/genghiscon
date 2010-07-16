@@ -1,24 +1,30 @@
-<% content_for :title do %>Content Block - <%= @content_block.title %><% end %>
+<% content_for :title do %>Content Block - <%= @block.title %><% end %>
 
 <p>
   <strong>Title:</strong>
-  <%=h @content_block.title %>
+  <%=h @block.title %>
 </p>
 <p>
   <strong>Tags:</strong>
-	<td><%= tag_list(@content_block) %></td>
+	<td><%= tag_list(@block) %></td>
 </p>
 <p>
   <strong>Pages:</strong>
-	<td><%= page_list(@content_block) %></td>	
+	<td><%= page_list(@block) %></td>	
 </p>
 <p>
   <strong>Summary:</strong>
-	<td><%= @content_block.summary %></td>	
+	<td><%= @block.summary %></td>	
 </p>
-<%= RedCloth.new(@content_block.bodytext).to_html %>
+<%= RedCloth.new(@block.bodytext).to_html %>
 <p>
-  <%= link_to "Edit", edit_content_block_path(@content_block) %> |
-  <%= link_to "Destroy", @content_block, :confirm => 'Are you sure?', :method => :delete %> |
-  <%= link_to "View All", content_blocks_path %>
+  <%= link_to "Edit", edit_content_block_path(@block) %> |
+  <%= link_to "Destroy", @block, :confirm => 'Are you sure?', :method => :delete %> |
+  <%= link_to "View All", content_blocks_path %> | 
+
+	<% if @block.published %>
+		<%= link_to "Unpublish", unpublish_content_block_path(@block), :confirm => 'Are you sure?' %>
+	<% else %>
+		<%= link_to "Publish", publish_content_block_path(@block), :confirm => 'Are you sure?' %>
+	<% end %>
 </p>

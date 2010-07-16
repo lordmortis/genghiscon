@@ -1,0 +1,14 @@
+<% if @page.tag != nil %>
+<% for block in @page.tag.blocks %>
+<%= link_to(block.updated_at.strftime("%H:%M on %b %d, %Y"), :action => "content", :id => block.id) %>
+<blockquote>
+<%= block.summary %>
+</blockquote>
+<% end %>
+<% end %>
+<% if @page.block != nil %>
+<%= link_to(@page.block.updated_at.strftime("%H:%M on %b %d, %Y"), :controller => "bleat", :action => "content", :id => @section.block.id) %>
+<blockquote>
+<%= @page.block.summary %>
+</blockquote>
+<% end %>

@@ -1,7 +1,7 @@
 class ContentBlocksController < ApplicationController
-	filter_resource_access
+	filter_access_to :all
 	layout "base"
-
+	
   def index
     @blocks = ContentBlock.find(:all)
 
@@ -10,6 +10,22 @@ class ContentBlocksController < ApplicationController
 			format.mobile # index.mobile.erb
     end
   end
+
+	def preview
+		render :text => RedCloth.new(params[:redcloth]).to_html
+	end
+	
+	def publish
+		@block = ContentBlock.find(params[:id])
+		@block.publish(url_for(:action => "content", :controller => "content_viewer", :id => @block.id, :skip_relative_url_root => true))
+		redirect_to(@block)
+	end
+	
+	def unpublish
+		@block = ContentBlock.find(params[:id])
+		@block.unpublish
+		redirect_to(@block)
+	end
 
   def show
 		@block = ContentBlock.find(params[:id])

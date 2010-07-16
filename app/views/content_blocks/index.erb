@@ -16,8 +16,16 @@
 		<td><%=h block.updated_at %></td>
 		<td><%=h block.summary %></td>
 		<td><%= tag_list(block) %></td>
-		<td><%= page_list(block) %></td>		
-    <td><%= link_to 'Show', block %> <%= link_to 'Edit', edit_content_block_path(block) %> <%= link_to 'Destroy', block, :confirm => 'Are you sure?', :method => :delete %></td>
+		<td><%= page_list(block) %></td>
+    <td><%= link_to 'Show', block %>
+			<%= link_to 'Edit', edit_content_block_path(block) %>
+			<%= link_to 'Destroy', block, :confirm => 'Are you sure?', :method => :delete %>
+			<% if block.published %>
+			<%= link_to "Unpublish", unpublish_content_block_path(block), :confirm => 'Are you sure?' %>
+			<% else %>
+			<%= link_to "Publish", publish_content_block_path(block), :confirm => 'Are you sure?' %>
+			<% end %>
+		</td>
   </tr>
 <% end %>
 </table>

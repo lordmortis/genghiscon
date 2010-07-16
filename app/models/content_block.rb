@@ -10,7 +10,29 @@ class ContentBlock < ActiveRecord::Base
 	
 	default_scope :order => "created_at desc"
 	
-	attr_accessible :summary, :bodytext, :autosummarize, :tag_list, :title
+	attr_accessible :summary, :autosummarize, :preview, :bodytext, :tag_list, :title
+	
+	def publish(link)
+		self.published = true
+		
+		# short link
+		# TODO: make this less hacky...
+		if (self.short_url == nil)
+			#bitly = Bitly.new(ENV['BITLYUSER'], ENV['BITLYKEY'])
+			logger.debug("Link to shorten: " + link)
+		end
+		
+		# do twitter publishing
+		# do LJ publishing
+		self.save
+	end
+	
+	def unpublish
+		self.published = false
+		# Remove tweet.
+		# Remove LJ post.
+		self.save
+	end
 		
 	def tag_list()
 		value = ""
@@ -67,12 +89,6 @@ class ContentBlock < ActiveRecord::Base
 		end
 	end
 		
-	def before_update
-		if autosummarize 
-			do_autosummarize
-		end
-	end
-	
 	def do_autosummarize
 		if bodytext.size <= 160
 			self.summary = bodytext

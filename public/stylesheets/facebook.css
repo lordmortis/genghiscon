@@ -1,0 +1,54 @@
+#wrapper-top {
+	height: 108px;
+	background-color: white;
+	padding: 5px;
+	width: 745px;
+	margin: 0;
+}
+
+#topbar {
+	padding: 0;
+	margin-bottom: 0;
+	position: relative;
+	height: 48px;
+	background: black url('/images/topbar-background.png') repeat-x scroll 100% 0;
+	line-height: 30px;
+	max-width: 1024px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	color: white;
+}
+
+#topbar #content {
+	margin: 0.5em;
+	color: white;
+	font-family: Arial;
+	font-size: 1.5em;
+}
+
+#page {
+	padding: 0px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 100%;
+	background: #CCCCCC;
+}
+
+#page #content {
+	position: relative;
+	font-size: 1.5em;
+	padding: 1.0em;
+	color: black;
+	min-height: 512px;
+}
+
+.floatright {
+	float: right;
+}
+
+.hidden {
+	display: none;
+}
+
+

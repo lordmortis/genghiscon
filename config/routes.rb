@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :user_session
   map.resources :users
-  map.resources :content_blocks
+  map.resources :content_blocks, :collection => { :preview => :post }, :member => { :publish => :post, :unpublish => :post}
   map.resources :content_tags
   map.resources :content_pages
 	map.resources :events, :has_many => [:attendees]

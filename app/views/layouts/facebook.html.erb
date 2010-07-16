@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html "xmlns"="http://www.w3.org/1999/xhtml" "xmlns:fb"="http://www.facebook.com/2008/fbml">
+<head>
+	<title><%= yield :title %> - GenghisCon</title>
+	<link rel="shortcut icon" href="/images/rails.png"/>
+	<link href="/stylesheets/facebook.css" media="screen" rel="stylesheet" type="text/css" />
+	<%= yield :header %>
+</head>
+<body>
+<div id="wrapper-top">
+<div class="floatright"><%= link_to("Go to Full Site", "http://genghiscon.org", :target => "_top") %></div>
+<img src="/images/topbar_logo.png" height="108" width="373"/>
+</div>
+<div id="topbar">
+  <div id="content">
+  <div class="floatright">14th January to 16th January 2011</div>
+  GenghisCon 2011: The Wraith of Khan
+  </div>
+  <ul>
+<% for page in ContentPage.topbar -%>
+<% if "page" == controller.action_name && controller.controller_name == "content_viewer" && params[:id] == page.name -%>
+<% liclass = "selected" -%>
+<% else -%>
+<% liclass = "unselected" -%>
+<% end -%>
+<li class="<%= liclass %>"><%= link_to("#{page.name.capitalize}", {:controller => "content_viewer", :action => "page", :id => page.name}) %></li>
+<% end -%>
+    </ul>
+  </div>
+  <div id="page">
+    <div id="content">
+	    <%= yield %>
+	  </div>
+	</div>
+</body>
+</html>

@@ -23,7 +23,6 @@ class CreateUsers < ActiveRecord::Migration
 
       add_index :users, :openid_identifier
       add_index :users, :login
-
   end
 
   def self.down
