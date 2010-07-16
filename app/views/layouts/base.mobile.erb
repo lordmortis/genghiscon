@@ -9,6 +9,7 @@
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 	<%= jqueryincludes %>	
 	<%= yield :header %>
+  <script src="http://platform.twitter.com/anywhere.js?id=<%= ENV['TWITTER_CONSUMER_KEY'] %>&v=1" type="text/javascript"></script>
 </head>
 <body>
   <div id="wrapper-top">

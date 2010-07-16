@@ -10,13 +10,18 @@ body {
 	margin: 0px;
 }
 
-#wrapper-top {
-	height: 108px;
-	background-color: white;
+#container {
+	padding: 0px;
 	margin-left: auto;
 	margin-right: auto;
 	max-width: 1024px;
 	width: 90%;
+	background: #CCCCCC;
+}
+
+#wrapper-top {
+	height: 108px;
+	background-color: white;
 }
 
 #topbar {
@@ -24,11 +29,8 @@ body {
 	height: 96px;
 	background: black url('/images/topbar-background.png') repeat-x scroll 100% 0;
 	line-height: 30px;
-	max-width: 1024px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
 	color: white;
+	margin-bottom: 0px;
 }
 
 #topbar #content {
@@ -86,20 +88,9 @@ body {
 }
 
 #page {
-	padding: 0px;
-	margin-left: auto;
-	margin-right: auto;
-	max-width: 1024px;
-	width: 90%;
-	background: #CCCCCC;
-}
-
-#page #content {
-	position: relative;
-	font-size: 0.85em;
 	padding: 1.0em;
 	color: black;
-	min-height: 512px;
+	font-size: 0.85em;
 }
 
 #bottombar {
@@ -107,10 +98,7 @@ body {
 	height: 96px;
 	background: black url('/images/bottombar-background.png') repeat-x scroll 100% 0;
 	line-height: 30px;
-	max-width: 1024px;
-	margin-left: auto;
-	margin-right: auto;
-	width: 90%;
+	clear: both;
 }
 
 .floatright {

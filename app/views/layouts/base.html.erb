@@ -9,8 +9,10 @@
 	<%= javascript_tag "var AUTH_TOKEN = #{form_authenticity_token.inspect};" if protect_against_forgery? %>
 	<%= jqueryincludes %>
 	<%= yield :header %>
+  <script src="http://platform.twitter.com/anywhere.js?id=<%= ENV['TWITTER_CONSUMER_KEY'] %>&v=1" type="text/javascript"></script>
 </head>
 <body>
+<div id="container">
   <div id="wrapper-top">
   <div id="login">
     <% if current_user %>
@@ -43,11 +45,10 @@
     </ul>
   </div>
   <div id="page">
-    <div id="content">
-	    <%= yield %>
-	  </div>
+    <%= yield %>
 	</div>
 	<div id="bottombar">
   </div>
+</div>
 </body>
 </html>
