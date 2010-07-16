@@ -1,6 +1,7 @@
 <% content_for :title do %>Register new user<% end %>
 Register New User
 <% form_for @user do |f| %>
+	<%= oauth_register_button :value => "Register with Twitter" %><br/>
   <%= f.error_messages %>
   <p>
     <%= f.label :login %><br />
