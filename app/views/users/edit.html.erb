@@ -1,5 +1,19 @@
 <% content_for :title do %>Edit Profile<% end %>
 Edit Profile
+
+<% form_for @user do |f| %>
+<%= oauth_register_hidden_input %>
+<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :twitter}) %>
+Associate Twitter: <%= f.submit "Register" %>
+<% end %>
+
+<% form_for @user do |f| %>
+<%= oauth_register_hidden_input %>
+<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :facebook}) %>
+Associate Facebook: <%= f.submit "Register" %>
+<% end %>
+
+
 <% form_for @user do |f| %>
   <%= f.error_messages %>
   <p>

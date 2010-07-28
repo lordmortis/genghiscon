@@ -1,5 +1,18 @@
 <% content_for :title do %>Register new user<% end %>
-Register New User
+Register New User<br/><br/>
+
+<% form_for @user do |f| %>
+<%= oauth_register_hidden_input %>
+<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :twitter}) %>
+Via Twitter: <%= f.submit "Register" %>
+<% end %>
+
+<% form_for @user do |f| %>
+<%= oauth_register_hidden_input %>
+<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :facebook}) %>
+Via Facebook: <%= f.submit "Register" %>
+<% end %>
+
 <% form_for @user do |f| %>
   <%= f.error_messages %>
   <p>
@@ -15,9 +28,9 @@ Register New User
     <%= f.password_field :password %>
   </p>
   <p>
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
+    <% f.label :password_confirmation %><br />
+    <% f.password_field :password_confirmation %>
   </p>
 	<%= recaptcha_tags %>
-  <p><%= f.submit "Submit" %></p>
+  <p><%= f.submit "Register" %></p>
 <% end %>

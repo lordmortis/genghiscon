@@ -7,9 +7,9 @@ class UsersController < ApplicationController
 
 	def create
 	  @user = User.new(params[:user])
-		if !verify_recaptcha(:model => @user, :message => "Sorry! We couldn't verify that you were a human :(")
-			render :action => 'new'
-		end
+#		if !verify_recaptcha(:model => @user, :message => "Sorry! We couldn't verify that you were a human :(")
+#			render :action => 'new'
+#		end
 
  		@user.save do |result|
 	    if result

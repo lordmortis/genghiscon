@@ -55,7 +55,7 @@ end
 Bitly.use_api_version_3
 
 # probably should change this to memcache on production
-#OpenIdAuthentication.store = :file
+OpenIdAuthentication.store = :file
 
 ENV['BITLYUSER']  = "lordmortis"
 ENV['BITLYKEY']  = "R_e45d05c52caa953ebc840458e147b9fb"

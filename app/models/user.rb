@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  acts_as_authentic do |c|
+  acts_as_authentic do |config|
+    config.validate_email_field    = false
   end # block optional
 
 	has_many	:user_roles, :class_name => "UserRole"

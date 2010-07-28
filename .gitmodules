@@ -4,3 +4,6 @@
 [submodule "vendor/plugins/paper_trail"]
 	path = vendor/plugins/paper_trail
 	url = git://github.com/airblade/paper_trail.git
+[submodule "vendor/plugins/authlogic-connect"]
+	path = vendor/plugins/authlogic-connect
+	url = git://github.com/viatropos/authlogic-connect.git

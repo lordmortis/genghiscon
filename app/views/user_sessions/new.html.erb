@@ -1,5 +1,18 @@
 <% content_for :title do %>Log In<% end %>
 <h1>Login</h1>
+
+<% form_for @user_session, :url => user_session_path do |f| %>
+	<%= oauth_login_hidden_input %>
+	<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :twitter}) %>
+	Via Twitter: <%= f.submit "Register" %>
+<% end %>
+
+<% form_for @user_session, :url => user_session_path do |f| %>
+	<%= oauth_login_hidden_input %>
+	<%= tag(:input, {:type => "hidden", :name => "oauth_provider", :value => :facebook}) %>
+	Via Facebook: <%= f.submit "Register" %>
+<% end %>
+
 <% form_for @user_session, :url => user_session_path do |f| %>
   <%= f.error_messages %>
   <%= f.label :login %><br /></strong>
