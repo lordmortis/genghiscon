@@ -6,4 +6,4 @@
 	url = git://github.com/airblade/paper_trail.git
 [submodule "vendor/plugins/authlogic-connect"]
 	path = vendor/plugins/authlogic-connect
-	url = git@github.com:lordmortis/authlogic-connect-example-rails2.git
+	url = git@github.com:lordmortis/authlogic-connect.git
