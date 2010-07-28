@@ -20,7 +20,8 @@ Event: <span id="event_name" style="font-size: 1.5em;"></span><br/>
 <span id="attending_attendees"></span> Ticketed<br/>
 <br/><br/>
 <div id="event_attendees">
-<button id="add_button" onClick="spawnAdd()">Add Attendee</button><br/><br/>
+<button id="add_button" onClick="spawnAdd()">Add Attendee</button><br/>
+<button id="refresh_button" onClick="redrawAttendees()">Refresh Attendees</button><br/><br/>
 </div>
 <p>
   <%= link_to "Destroy", @event, :confirm => 'Are you sure?', :method => :delete %> |

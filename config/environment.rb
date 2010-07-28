@@ -19,8 +19,9 @@ Rails::Initializer.run do |config|
   # config.gem "hpricot", :version => '0.6', :source => "http://code.whytheluckystiff.net"
   # config.gem "sqlite3-ruby", :lib => "sqlite3"
   # config.gem "aws-s3", :lib => "aws/s3"
+	config.gem "json"
+	config.gem "oauth2"
 	config.gem "authlogic"
-	config.gem "authlogic-oauth", :lib => "authlogic_oauth"
 	
 	config.gem "declarative_authorization"
 
@@ -53,11 +54,8 @@ end
 
 Bitly.use_api_version_3
 
-#require 'erubis/helpers/rails_helper'
-#Erubis::Helpers::RailsHelper.engine_class = Erubis::FastEruby # or Erubis::FastEruby
-#Erubis::Helpers::RailsHelper.init_properties = {}
-#Erubis::Helpers::RailsHelper.show_src = nil
-#Erubis::Helpers::RailsHelper.preprocessing = false
+# probably should change this to memcache on production
+#OpenIdAuthentication.store = :file
 
 ENV['BITLYUSER']  = "lordmortis"
 ENV['BITLYKEY']  = "R_e45d05c52caa953ebc840458e147b9fb"

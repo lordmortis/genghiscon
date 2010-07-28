@@ -24,11 +24,11 @@ class User < ActiveRecord::Base
 	end
 	
 	def before_create
-		update_twitter_user
+		#update_twitter_user
 	end
 	
 	def before_update
-		update_twitter_user
+		#update_twitter_user
 	end
 
 end

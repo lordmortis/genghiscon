@@ -1,0 +1,26 @@
+connect:
+  twitter:
+    key: "SvbaMrcFqEqs3FLOX7uGfQ"
+    secret: "w88I4yOC9QRY8bkh6NK0k72I6iSxTisv64yHslNs"
+    label: "Twitter"
+  facebook:
+    key: "8fd85feaaec6c5b0d0e11273f188a11b"
+    secret: "01a2bd6fc8b88476405f40fde482d4ff"
+    label: "Facebook"
+#  google:
+#    key: "my_key"
+#    secret: "my_secret"
+#    label: "Google"
+#  yahoo:
+#    key: "my_key"
+#    secret: "my_secret"
+#    label: "Yahoo"
+#  myspace:
+#    key: "my_key"
+#    secret: "my_secret"
+#  vimeo:
+#    key: "my_key"
+#    secret: "my_secret"
+#  linked_in:
+#    key: "my_key"
+#    secret: "my_secret"

@@ -22,6 +22,22 @@ function Event() {
 			this.attendees.push(temp);
 		}
 	}
+	
+	this.sortAttendees = function sortAttendees() {
+		var temp = new Array();
+		for (var i = 0; i < this.attendees.length; i++) {
+			var attendee = this.attendees[i];
+			if (attendee.attended)
+				temp.push(attendee);
+		}
+		for (var i = 0; i < this.attendees.length; i++) {
+			var attendee = this.attendees[i];
+			if (!attendee.attended)
+				temp.push(attendee);
+		}
+		
+		this.attendees = temp;
+	}
 		
 	this.updateFinished = function updateFinished(object, data, textStatus, XMLHttpRequest) {
 		outstanding -= 1;

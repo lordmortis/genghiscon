@@ -1,7 +1,6 @@
 <% content_for :title do %>Edit Profile<% end %>
 Edit Profile
 <% form_for @user do |f| %>
-	<%= oauth_register_button :value => "Register with Twitter" %><br/>
   <%= f.error_messages %>
   <p>
     <%= f.label :email %><br />

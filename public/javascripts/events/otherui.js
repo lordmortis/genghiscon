@@ -8,8 +8,9 @@ function displaybusy() {
 function redrawAttendees() {
 	$("#total_attendees").html(aevent.attendees.length);
 	$("#attending_attendees").html(aevent.attending);
-	list = $("#event_attendees")
+	list = $("#event_attendees");
 	list.find(".attendee").remove();
+	aevent.sortAttendees();
 	for (var i = 0; i < aevent.attendees.length; i++) {
 		var attendee = aevent.attendees[i];
 		list.append(attendee.uiLine(true));
