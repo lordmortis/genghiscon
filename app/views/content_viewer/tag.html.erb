@@ -1,4 +1,7 @@
 <% content_for :title do %>2011 - <%= @tag.name.capitalize %><% end %>
+<% content_for :header do %>
+<%= auto_discovery_link_tag(:rss, {:format => :xml}, {:title => "GenghisCon - RSS feed - #{@tag.name.capitalize}"}) %>
+<% end %>
 <% for block in @tag.blocks %>
 <%= link_to(block.updated_at.strftime("%H:%M on %b %d, %Y"), :action => "content", :id => block.id) %>
 <blockquote>
